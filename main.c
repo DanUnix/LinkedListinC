@@ -13,15 +13,15 @@ struct CELL{
 
 // Lookup an element in the list
 // return 1 if true and 0 if false
-int lookup(int x, LIST L)
+int lookup(int x, LIST *pL)
 {
     // BASE CASE
-    if(L == NULL)
+    if((*pL) == NULL)
         return 0;
     // If element is in the list return TRUE
-    else if(x == L->element)
+    else if(x == (*pL)->element)
         return 1;
-    return lookup(x, L->next);
+    return lookup(x, &((*pL)->next));
 }
 
 // insert an element into the list
@@ -49,31 +49,15 @@ void delete(int x, LIST *pL)
         else
             delete(x, &((*pL)->next));
 }
-// When program is done free the memory being used in heap by list
-void free_cells(LIST *pL)
-{
-    // BASE CASE
-    if((*pL) == NULL)
-        return;
-    // create temporary pointer to LIST 
-    LIST *temp = pL;
-    // Free the current pointer to Cell
-    free(*pL);
-    // Set current pointer to Cell to next Cell in temp
-    (*pL) = (*temp)->next; 
-    // Recursively free until BASE CASE 
-    free_cells(&(*pL));
-        
-}
 
 // Display elements in list
-void display(LIST *pL)
+void display(LIST L)
 {
     printf("List: [ ");
-    while((*pL) != NULL){
-        printf("%d",(*pL)->element);
+    while(L != NULL){
+        printf("%d",L->element);
         printf(","); 
-        (*pL) = (*pL)->next;
+        L = L->next;
     }
     printf(" ]\n");
 }
@@ -91,17 +75,24 @@ int main()
 {
     // Allocate memory for myList
     LIST *myList = malloc(sizeof(struct CELL));
-    time_t t;
+	time_t t;
     int i;
     // Insert random values into list
     srand((unsigned) time(&t));
     for(i = 0; i < 10; i++)
         insert(rand() % 100, myList);
     // Display new list
-    display(myList);
-    //display_recursive(myList);
-   
-    display(myList);
-    // Free memory of list
-    free_cells(myList);
+    display(*myList);
+	// Test Lookup Function
+	int find;
+	printf("What Number would you like to find? ");
+	scanf("%d",&find);
+	int look = lookup(find,myList);
+	if(look == 1)
+		printf("%d is in the List\n",find);
+	else
+		printf("%d is not in the List\n", find);	
+	
+
+    display(*myList);
 }
