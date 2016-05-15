@@ -62,13 +62,13 @@ void display(LIST L)
     printf(" ]\n");
 }
 
-void display_recursive(LIST *pL)
+void display_recursive(LIST L)
 {
     // BASE CASE
-    if((*pL) == NULL)
+    if(L == NULL)
         return;
-    printf("%d,", (*pL)->element);
-    display_recursive(&(*pL)->next);
+    printf("%d,", L->element);
+    display_recursive(L->next);
 }
 
 int main()
