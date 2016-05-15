@@ -30,3 +30,9 @@
 
 # Debug files
 *.dSYM/
+
+# Swap files
+*.swp
+
+# Stackdumps
+.stackdump
