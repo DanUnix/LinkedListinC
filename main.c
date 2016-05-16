@@ -71,6 +71,14 @@ void display_recursive(LIST L)
     display_recursive(L->next);
 }
 
+void display_recursive_helper(LIST L)
+{
+    printf("List: [ ");
+    display_recursive(L);
+    printf("]\n");
+}
+
+
 int main()
 {
     // Allocate memory for myList
@@ -83,7 +91,7 @@ int main()
         insert(rand() % 100, myList);
     // Display new list
     display(*myList);
-	// Test Lookup Function
+    // Test Lookup Function
 	int find;
 	printf("What Number would you like to find? ");
 	scanf("%d",&find);
@@ -93,6 +101,8 @@ int main()
 	else
 		printf("%d is not in the List\n", find);	
 	
-
+    printf("Which element would you like to delete? ");
+    scanf("%d", &find);
+    delete(find, myList);
     display(*myList);
 }
