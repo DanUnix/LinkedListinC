@@ -37,3 +37,6 @@
 
 # Stackdumps
 .stackdump
+
+# Ignore program itself
+linkedlist

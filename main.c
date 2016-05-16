@@ -77,7 +77,7 @@ int main()
     LIST *myList = malloc(sizeof(struct CELL));
 	time_t t;
     int i;
-    // Insert random values into list
+    // Insert 10 random values into list
     srand((unsigned) time(&t));
     for(i = 0; i < 10; i++)
         insert(rand() % 100, myList);
