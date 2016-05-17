@@ -100,7 +100,8 @@ int main()
 		printf("%d is in the List\n",find);
 	else
 		printf("%d is not in the List\n", find);	
-	
+    
+    // Prompt User to delete an element 	
     printf("Which element would you like to delete? ");
     scanf("%d", &find);
     delete(find, myList);
