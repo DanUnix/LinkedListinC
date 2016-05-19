@@ -78,7 +78,6 @@ void display_recursive_helper(LIST L)
     printf("]\n");
 }
 
-
 int main()
 {
     // Allocate memory for myList
@@ -90,7 +89,7 @@ int main()
     for(i = 0; i < 10; i++)
         insert(rand() % 100, myList);
     // Display new list
-    display(*myList);
+    display_recursive_helper(*myList);
     // Test Lookup Function
 	int find;
 	printf("What Number would you like to find? ");
